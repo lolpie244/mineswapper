@@ -9,7 +9,8 @@ const m = b[1]
 
 const range = document.getElementById('bomb')
 
-let nn = parseInt((window.innerHeight) / 35)
+let nn = parseInt((window.innerHeight) / 35) - 4
+nn = Math.max(3, nn)
 let mm = parseInt((window.innerWidth) / 35)
 range.min = Math.min(nn, mm) * 2
 range.max = Math.max(mm, nn) * 2
@@ -27,17 +28,19 @@ function press(event) {
     localStorage["bombs"] = range.valueAsNumber
     localStorage["n"] = nn
     localStorage["m"] = mm
-    n.innerText = "Перезавантажте сторінку"
     button.remove()
+    n.remove()
     m.remove()
     k.remove()
     range.remove()
     button.remove()
+    document.getElementById("ADD").insertAdjacentHTML("beforeend", `<h1 style="font-size: 20px;">перезагрузіть сторінку</h1>`)
 }
 
 function res() {
-    nn = parseInt((window.innerHeight) / 35)
+    nn = parseInt((window.innerHeight) / 35) - 4
     mm = parseInt((window.innerWidth) / 35)
+    nn = Math.max(3, nn)
     range.min = Math.min(nn, mm) * 2
     range.max = Math.max(mm, nn) * 2
     n.innerText = `Кількість клітинок в рядку: ${nn}`
